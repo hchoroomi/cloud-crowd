@@ -115,9 +115,10 @@ module CloudCrowd
     def download_input
       return unless input_is_url?
       Dir.chdir(@work_directory) do
+        input_url = @input.clone
         @input_path = File.join(@work_directory, safe_filename(@input))
         @file_name = File.basename(@input_path, File.extname(@input_path))
-        download(@input, @input_path)
+        download(input_url, @input_path)
       end
     end
 
